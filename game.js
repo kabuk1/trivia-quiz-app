@@ -8,7 +8,7 @@ let currentQuestion = {};
 let acceptingAnswers = true;
 let score = 0;
 let questionCounter = 0;
-let availableQuestion = [];
+let availableQuestions = [];
 
 let questions = [];
 
@@ -17,7 +17,7 @@ fetch("https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=mul
         return res.json();
     })
     .then(loadedQuestions => {
-        loadedQuestions.results.map(loadedQuestions => {
+        questions = loadedQuestions.results.map(loadedQuestion => {
             const formattedQuestion = {
                 question: loadedQuestion.questions
             };
