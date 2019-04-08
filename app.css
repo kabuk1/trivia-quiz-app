@@ -100,7 +100,7 @@ h3 {
     transition: transform 150ms;
 }
 
-btn[disable]:hover {
+.btn[disabled]:hover {
     cursor: not-allowed;
     box-shadow: none;
     transform: none;
