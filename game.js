@@ -1,8 +1,8 @@
 const question = document.getElementById("question");
 const choices = Array.from(document.getElementsByClassName("choice-text"));
-const progressText = document.getElementById('progressText');
-const progressBarFull = document.getElementById('progressBarFull');
-const scoreText = document.getElementById('score');
+const progressText = document.getElementById("progressText");
+const scoreText = document.getElementById("score");
+const progressBarFull = document.getElementById("progressBarFull");
 
 let currentQuestion = {};
 let acceptingAnswers = true;
@@ -44,14 +44,13 @@ startGame = () => {
     questionCounter = 0;
     score = 0;
     availableQuestions = [...questions];
-    
     getNewQuestion();
 };
 
 getNewQuestion = () => {
     if (availableQuestions.length === 0 || questionCounter >= MAX_QUESTIONS) {
         //go to the end page
-        return window.location.assign('/end.html');
+        return window.location.assign("/end.html");
     }
     questionCounter++;
     progressText.innerText = `Question ${questionCounter}/${MAX_QUESTIONS}`;
@@ -63,7 +62,7 @@ getNewQuestion = () => {
         question.innerText = currentQuestion.question;
 
         choices.forEach(choice => {
-            const number = choice.dataset['number'];
+            const number = choice.dataset["number"];
             choice.innerText = currentQuestion["choice" + number];
         });
 
@@ -77,14 +76,11 @@ choices.forEach(choice => {
 
         acceptingAnswers = false;
         const selectedChoice = e.target;
-        const selectedAnswer = selectedChoice.dataset['number'];
+        const selectedAnswer = selectedChoice.dataset["number"];
 
-        const classToApply = 'incorrect';
-        if (selectedAnswer == currentQuestion.answer) {
-            classToApply = 'correct';             
-        }
+        const classToApply = selectedAnswer == currentQuestion.answer ? "correct" : "incorrect";
 
-        if (classToApply === 'correct') {
+        if (classToApply === "correct") {
             incrementScore(CORRECT_BONUS);
         }
         
